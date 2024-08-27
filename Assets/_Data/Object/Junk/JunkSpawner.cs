@@ -11,7 +11,7 @@ public class JunkSpawner : Spawner
     public static string junk_2 = "junk_2";
     public static string junk_3 = "junk_3";
     public static string junk_4 = "junk_4";
-
+    
     protected override void Awake()
     {
         base.Awake();

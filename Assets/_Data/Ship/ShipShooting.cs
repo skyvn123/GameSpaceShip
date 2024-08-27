@@ -33,7 +33,7 @@ public class ShipShooting : MyMonoBehaviour
         if (!isShooting) return;
         if (this.shootTimer < this.shootDelay) return;
         this.shootTimer = 0;
-        Transform newBullet = BulletSpawner.Instance.Spawn(BulletSpawner.bullet_2,this.transform.position, this.transform.rotation);
+        Transform newBullet = BulletSpawner.Instance.Spawn(BulletSpawner.bullet_1,this.transform.position, this.transform.rotation);
         if (newBullet == null) return;
         newBullet.gameObject.SetActive(true);
         Debug.Log("Shooting ==== "+newBullet.name);

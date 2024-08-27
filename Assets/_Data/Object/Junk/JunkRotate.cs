@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class JunkRotate : JunkAbtract
 {
-    [SerializeField] protected float speed = 20f;
-     protected virtual void FixedUpdate()
+    [SerializeField] protected float speed = 50f;
+    protected virtual void FixedUpdate()
     {
         this.Rotating();
     }

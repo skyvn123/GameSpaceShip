@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class JunkAbtract : MyMonoBehaviour
 {
-     [SerializeField] protected JunkCtrl junkCtrl;
+    [SerializeField] protected JunkCtrl junkCtrl;
     public JunkCtrl JunkCrtl {get => this.junkCtrl;}
     protected override void LoadComponents()
     {
