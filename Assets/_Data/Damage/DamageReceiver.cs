@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
-public class DamageReceiver : MyMonoBehaviour
+public abstract class DamageReceiver : MyMonoBehaviour
 {
     [Header("Damage Receiver")]
     [SerializeField] protected SphereCollider sphereCollider;
@@ -27,6 +27,7 @@ public class DamageReceiver : MyMonoBehaviour
     {
         base.LoadComponents();
         this.LoadCollider();
+        this.Reborn();
     }
 
     protected virtual void LoadCollider()
@@ -61,8 +62,5 @@ public class DamageReceiver : MyMonoBehaviour
         return this.hp <= 0;
     }
 
-    protected virtual void OnDead()
-    {
-        //for override
-    }
+    protected abstract void OnDead();
 }

@@ -36,7 +36,7 @@ public class ShipShooting : MyMonoBehaviour
         Transform newBullet = BulletSpawner.Instance.Spawn(BulletSpawner.bullet_1,this.transform.position, this.transform.rotation);
         if (newBullet == null) return;
         newBullet.gameObject.SetActive(true);
-        Debug.Log("Shooting ==== "+newBullet.name);
+        //Debug.Log("Shooting ==== "+newBullet.name);
         BarrelTime = 0.5f;
         shipflames[0].gameObject.SetActive(true);
     }

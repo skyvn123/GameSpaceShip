@@ -14,8 +14,8 @@ public class ObjectFly : MyMonoBehaviour
     // {
     //    transform.parent.Translate(speed * Time.deltaTime * transform.parent.up, Space.World);
     // }
-     void Update()
+    protected virtual void Update()
     {
-        transform.parent.Translate(this.direction*this.speed*Time.deltaTime);
+        transform.parent.Translate(this.speed * Time.deltaTime * this.direction);
     }
 }

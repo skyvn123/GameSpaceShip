@@ -7,10 +7,9 @@ public class JunkSpawner : Spawner
 {
     protected static JunkSpawner instance;
     public static JunkSpawner Instance { get => instance;}
-    public static string junk_1 = "junk_1";
-    public static string junk_2 = "junk_2";
-    public static string junk_3 = "junk_3";
-    public static string junk_4 = "junk_4";
+    public static string Meteorite_1 = "Meteorite_1";
+    public static string Meteorite_2 = "Meteorite_2";
+    public static string Meteorite_3 = "Meteorite_3";
     
     protected override void Awake()
     {

@@ -7,6 +7,7 @@ public abstract class Spawner : MyMonoBehaviour
     [SerializeField] protected Transform holder;
     [SerializeField] protected List<Transform> prefabs;
     [SerializeField] protected List<Transform> poolObjs;
+    [SerializeField] protected int spawnedCount;
     protected override void LoadComponents()
     {
         this.LoadPrefabs();
@@ -20,8 +21,8 @@ public abstract class Spawner : MyMonoBehaviour
         {
             this.prefabs.Add(prefab);
         }
-       this.HidePrefabs();
-       Debug.Log(transform.name + " Load Component Prefab");
+    this.HidePrefabs();
+    Debug.Log(transform.name + " Load Component Prefab");
     }
 
     protected virtual void LoadHolder()
@@ -36,19 +37,24 @@ public abstract class Spawner : MyMonoBehaviour
     {
         foreach (Transform prefab in prefabs)
         {
-           prefab.gameObject.SetActive(false);
+        prefab.gameObject.SetActive(false);
         }
     }
     public virtual Transform Spawn(string prefabName,Vector3 spawnPos,Quaternion rotation)
     {
         Transform prefab = GetPrefabbyName(prefabName);
         if (prefab == null) return null;
+        return this.Spawn(prefab,spawnPos,rotation);
+    }
+    public virtual Transform Spawn(Transform prefab,Vector3 spawnPos,Quaternion rotation)
+    {
         Transform newprefab = this.GetObjFromPool(prefab);
         newprefab.SetPositionAndRotation(spawnPos, rotation);
         newprefab.parent = this.holder;
+        this.spawnedCount++;
         return newprefab;
     }
-    protected virtual Transform GetObjFromPool(Transform prefab)
+        protected virtual Transform GetObjFromPool(Transform prefab)
     {
         foreach(Transform poolObj in this.poolObjs)
         {
@@ -64,6 +70,7 @@ public abstract class Spawner : MyMonoBehaviour
     {
         this.poolObjs.Add(obj);
         obj.gameObject.SetActive(false);
+        this.spawnedCount--;
     }
 
     protected virtual Transform GetPrefabbyName(string prefabName)
@@ -75,5 +82,15 @@ public abstract class Spawner : MyMonoBehaviour
         }
         Debug.Log("Prefab not found");
         return null;
+    }
+    public virtual Transform RandomPrefab()
+    {
+        int rand = Random.Range(0,this.prefabs.Count);
+        return this.prefabs[rand];
+    }
+
+        public virtual int SpawnedCount()
+    {
+        return spawnedCount;
     }
 }

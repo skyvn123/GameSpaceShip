@@ -19,8 +19,8 @@ public class DespawnByDistance : Despawn
 
     protected override bool CanDespawn()
     {
-       if(distanceLimit > GetDistancebtwCamera()) return false;
-       return true;
+        if(distanceLimit > GetDistancebtwCamera()) return false;
+        return true;
     }
 
     protected virtual float GetDistancebtwCamera()

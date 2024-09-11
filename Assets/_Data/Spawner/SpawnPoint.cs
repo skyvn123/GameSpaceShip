@@ -16,7 +16,7 @@ public class SpawnPoint : MyMonoBehaviour
         {
             this.spawnPoints.Add(spawnpoint);
         }
-       Debug.Log(transform.name + ": Load SpawnPoint",gameObject);
+    Debug.Log(transform.name + ": Load SpawnPoint",gameObject);
     }
     public virtual Transform GetRandom()
     {
