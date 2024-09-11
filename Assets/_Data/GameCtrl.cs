@@ -6,7 +6,8 @@ public class GameCtrl : MyMonoBehaviour
 {
     protected static GameCtrl instance;
     public static GameCtrl Instance { get => instance;}
-
+    [SerializeField] protected Camera mainCamera;
+    public Camera MainCamera {get => this.mainCamera;}
 
     protected override void Awake()
     {
@@ -14,16 +15,12 @@ public class GameCtrl : MyMonoBehaviour
         if (instance != null) Debug.Log("Only 1 GameCtrl allow");
         GameCtrl.instance = this;
     }
-    [SerializeField] protected Camera mainCamera;
-    public Camera MainCamera {get => this.mainCamera;}
-
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadCamera();
-      
     }
-       protected virtual void LoadCamera()
+    protected virtual void LoadCamera()
     {
         if (this.mainCamera != null ) return;
         mainCamera = Transform.FindObjectOfType<Camera>();
